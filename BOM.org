@@ -2,6 +2,8 @@
 
 * WIP first prototype sourcing
 
+
+
 ** 3d printed parts
 
 | Part                                        | quantity | State | STL                                                       | CAD                          | Notes                                                                                              |
@@ -62,3 +64,41 @@ If you find one provider, he will be happy to sell you more of thse, how many do
 #+TBLFM: $6=$4*$5::@>$6=vsum(@2$6..@-1$6)
 
 REM spectra and dyneema lines
+=======
+** 3d printed or CNC parts
+
+| Part                                  | quantity | State | STL                                             | CAD                          | Notes                                                                                              |
+|---------------------------------------+----------+-------+-------------------------------------------------+------------------------------+----------------------------------------------------------------------------------------------------|
+| Open builds-inspired 20x20 vslot 26cm |       12 | DONE  | ./STL/vslot2020-26cm.stl                        | ./CAD/vslot2020.FCStd        |                                                                                                    |
+| Corner bracket                        |       24 | DONE  | ./STL/corner-bracket-20x20xM3.2.stl             | ./CAD/bracket.FCStd          | TODO: Parametrize in the same spreadshit as the extrusion one, for it only serves to unite corners |
+| Motor mount                           |        8 | DONE  | ./STL/nema17-mount.stl                          | ./CAD/motor_mount_try1.FCStd |                                                                                                    |
+| Reel                                  |        8 | DONE  | ./STL/reel2-5rounds-5.4diam4.55flat.stl         | ./CAD/reel2.FCStd            | LANG: what is it? a reel or a spool? and in spanish?                                               |
+| FixedSupport                          |        8 | PRINT |                                                 | ./CAD/pulleyB.FCStd          |                                                                                                    |
+| RotatingSupport                       |        8 | PRINT |                                                 | ./CAD/pulleyB.FCStd          |                                                                                                    |
+| Pulley                                |        8 | PRINT |                                                 | ./CAD/pulleyB.FCStd          |                                                                                                    |
+| Head moving Support                   |        1 |       |                                                 |                              |                                                                                                    |
+| PSU Support                           |        1 |       |                                                 |                              |                                                                                                    |
+| Board supports                        |          |       |                                                 |                              |                                                                                                    |
+| Box closures for CNC and vinilo       |        5 |       |                                                 |                              | TODO: at least one for the boards side, A second for  the PSU side at least                        |
+| vslot t-nut adaptor for 3mm nuts      |       72 | DONE  | https://www.thingiverse.com/thing:3050607/files | MISSING                      | TODO: replace with a CAD parametric one, this one is creative commons but non-commercial           |
+
+** Some of the parts can be done in metal too
+
+| Part                                      | quantity | STL | CAD | Notes                                                      |
+|-------------------------------------------+----------+-----+-----+------------------------------------------------------------|
+| Open builds-aluminum 20x20 vslot XxYxZ cm |       12 |     |     | TODO: parametrize with freeCAD so it isn't only 2020 vslot |
+
+** vitamins (parts that cannot be 3d printed, in reprap jargon)
+
+| name                                            | model                       | brand         | units | price (unit) | price (total) | unit |
+|-------------------------------------------------+-----------------------------+---------------+-------+--------------+---------------+------|
+| stepper motors                                  | 17HS19-2004S1 NEMA 17       | StepperOnline |    10 |       10.164 |        101.64 | eur  |
+| stepper motor controllers                       | TMC2209 V2.0                | TMC           |    10 |        6.996 |         69.96 | eur  |
+| main board                                      | STM32F429ZGT6 (Octopus Pro) | BIGTREETECH   |     1 |        92.99 |         92.99 | eur  |
+| Power Source Unit (PSU)                         | 12V 20A 240W                | LEDMO         |       |        19.86 |         19.86 | eur  |
+| small bearings (TODO document which ones)       |                             |               |    16 |              |               |      |
+| Standard rails for the boards like in the voron | TODO                        |               |     2 |              |               |      |
+| 3 mm diameter 8 mm long screws                  |                             |               |    56 |              |               |      |
+| 3 mm diameter 5 mm long screws                  |                             |               |    32 |              |               |      |
+| Cables and connectors                           | various TODO specify        |               |       |              |             0 | eur  |
+| Tools                                           | various TODO specify        |               |       |              |             0 | eur  |
