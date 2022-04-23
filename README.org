@@ -1,0 +1,36 @@
+
+* Reprope
+
+Reprope is a [[https://reprap.org/wiki/RepRap][reprap]] based on ropes or cables.
+
+Cable based robotic designs are very scalable compared to other systems.
+
+Depending on the needs, they can be configured for high precision and torque or high speed.
+
+When it comes to leveraging cable usage for higher torque; Arquímedes himself said it quite clearly:
+
+"Give me a place to stand, and I shall move the earth"
+
+Some people told us Arquímedes once elevated a war ship with his own force
+simply by using levers, pulleys, ropes and wooden stuff.
+
+Anyway, it was just a joke, it can be removed with a commit.
+
+* Copyright
+
+The copyright of this whole project belongs to the RepRope project developers.
+
+* License
+
+All files included in this project are under MIT license (see [[./COPYING]]),
+
+Currently some stl files used are not included in the project but
+references to those files, because they have other licenses.
+
+List of stl files that are used from external developers:
+
+| Part                             | License                         | STL                                             | Notes                                                                                                |
+|----------------------------------+---------------------------------+-------------------------------------------------+------------------------------------------------------------------------------------------------------|
+| vslot t-nut adaptor for 3mm nuts | Creative Commons Non commercial | https://www.thingiverse.com/thing:3050607/files | You can also just buy regular commercial t-nuts, this is only cheaper if you're not going to sell it |
+
+* NOTE: This is a work in progress, this printer doesn't work yet.
