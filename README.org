@@ -34,3 +34,11 @@ List of stl files that are used from external developers:
 | vslot t-nut adaptor for 3mm nuts | Creative Commons Non commercial | https://www.thingiverse.com/thing:3050607/files | You can also just buy regular commercial t-nuts, this is only cheaper if you're not going to sell it |
 
 * NOTE: This is a work in progress, this printer doesn't work yet.
+
+#+CAPTION: This is just the frame with the motors mounted with their reels
+#+NAME:   fig:reprope-reels-only
+[[./img/reprope1.jpg]]
+
+#+CAPTION: This is after adding the top pulleys too
+#+NAME:   fig:reprope-pulleys-only
+[[./img/reprope2.jpg]]
