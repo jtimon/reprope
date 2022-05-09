@@ -42,3 +42,13 @@ List of stl files that are used from external developers:
 #+CAPTION: This is after adding the top pulleys too
 #+NAME:   fig:reprope-pulleys-only
 [[./img/reprope2.jpg]]
+
+#+CAPTION: This is after adding some nylon ropes
+#+NAME:   fig:reprope-blue-ropes
+[[./img/reprope3.jpg]]
+
+#+NAME:   fig:reprope-blue-ropes2
+[[./img/reprope4.jpg]]
+
+#+NAME:   fig:reprope-blue-ropes3
+[[./img/reprope5.jpg]]
