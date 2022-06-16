@@ -36,8 +36,8 @@
 | stepper motors (x8)                     | 17HS19-2004S1 NEMA 17       | StepperOnline |    10 |       10.164 |        101.64 | eur  | https://www.amazon.es/gp/product/B07CPQC1Y6/ref=ppx_yo_dt_b_asin_title_o09_s00 |
 | stepper motor controllers (x8)          | TMC2209 V2.0                | TMC           |    10 |        6.996 |         69.96 | eur  | https://www.amazon.es/gp/product/B085WZYK1T/ref=ppx_yo_dt_b_asin_title_o07_s00 |
 | main board                              | STM32F429ZGT6 (Octopus Pro) | BIGTREETECH   |     1 |        92.99 |         92.99 | eur  | https://www.amazon.es/gp/product/B09JC2NR1L/ref=ppx_yo_dt_b_asin_title_o07_s01 |
-| Power Source Unit (PSU)                 | 12V 20A 240W                | LEDMO         |     1 |        19.86 |         19.86 | eur  |                                                                                |
-| bearings 633z (3mm x 13mm x 5 mm) (x16) | 633z (3mm x 13mm x 5 mm)    |               |    20 |        1.372 |         27.44 |      | https://www.makerbeam.com/makerbeam-bearings-10p-for-makerbeam.html            |
+| Power Source Unit (PSU)                 | LRS-200-24                  | MEANWELL      |     1 |        19.86 |         19.86 | eur  | https://www.amazon.es/gp/product/B07F29RHNP/ref=ppx_yo_dt_b_asin_title_o03_s01 |
+| bearings 633z (3mm x 13mm x 5 mm) (x16) | 633z (3mm x 13mm x 5 mm)    |               |    20 |        1.372 |         27.44 | eur  | https://www.makerbeam.com/makerbeam-bearings-10p-for-makerbeam.html            |
 |-----------------------------------------+-----------------------------+---------------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
 | Total                                   |                             |               |       |              |        311.89 | eur  |                                                                                |
 #+TBLFM: $6=$4*$5::@>$6=vsum(@2$6..@-1$6)
