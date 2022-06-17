@@ -13,12 +13,12 @@
 | Pulley                                      |        8 | DONE  | [[./STL/pulleyB-Pulley4.stl]]                                 | [[./CAD/pulleyB.FCStd]]          |                                                                                                    |
 | FixedSupport                                |        8 | DONE  | [[./STL/pulleyB-FixedSupport2.stl]]                           | [[./CAD/pulleyB.FCStd]]          |                                                                                                    |
 | RotatingSupport                             |        8 | DONE  | [[./STL/pulleyB-RotatingSupport5.stl]]                        | [[./CAD/pulleyB.FCStd]]          |                                                                                                    |
-| PSU Support                                 |        1 | DONE  | [[./STL/PSU_box-BoxBody.stl]]                                 | [[./CAD/PSU_box.FCStd]]          |                                                                                                    |
+| PSU Support                                 |        1 | DONE  | [[./STL/PSU_box-BoxBody2.stl]]                                | [[./CAD/PSU_box.FCStd]]          |                                                                                                    |
 | Nut covers (optional)                       |       16 | DONE  | [[./STL/nut-tests-innerDiam3.4-NutWidth2.35-NutSize5.62.stl]] | [[./CAD/nut-tests.FCStd]]        | Just aesthetical anc convenient for a couple of nuts in the pulleys                                |
 | Head moving Support                         |        1 |       |                                                           |                              |                                                                                                    |
 | Board supports                              |          |       |                                                           |                              |                                                                                                    |
 | Box closures for CNC and vinilo             |        5 |       |                                                           |                              | TODO: at least one for the boards side, A second for  the PSU side at least                        |
-| vslot t-nut adaptor for 3mm nuts (optional) |       72 | DONE  | https://www.thingiverse.com/thing:3050607/files           | MISSING                      | TODO: replace with a CAD parametric one, this one is creative commons but non-commercial           |
+| vslot t-nut adaptor for 3mm nuts (optional) |       77 | DONE  | https://www.thingiverse.com/thing:3050607/files           | MISSING                      | TODO: replace with a CAD parametric one, this one is creative commons but non-commercial           |
 | Distance tool (optional)                    |      0-1 | DONE  | [[./STL/DistanceTool-Body.stl]]                               | [[./CAD/DistanceTool.FCStd]]     | Convenience tool to easily place the motors in place.                                              |
 
 * (vitamins/printed/CNCed) Some of the parts can be done in metal too
@@ -27,7 +27,7 @@
 |-------------------------------------------+----------+-----+-----+-------|
 | Open builds-aluminum 20x20 vslot XxYxZ cm |       12 |     |     |       |
 | Corner brackets                           |       24 |     |     |       |
-| t-nuts 3 mm diameter (for 2020 v/t-slot)  |       72 |     |     |       |
+| t-nuts 3 mm diameter (for 2020 v/t-slot)  |       77 |     |     |       |
 
 ** vitamins (parts that cannot be 3d printed, in reprap jargon)
 
@@ -46,15 +46,17 @@
 
 If you find one provider, he will be happy to sell you more of thse, how many do you need, again?
 
-| name                  | model                | brand | units | price (unit) | price (total) | unit | Sourcing                                                                       |
-|-----------------------+----------------------+-------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
-| M3 screws 8 mm        |                      |       |    56 |              |             0 |      | https://www.amazon.es/gp/product/B07FL4G1DZ/ref=ppx_yo_dt_b_asin_title_o03_s01 |
-| M3 screws 5 mm        |                      |       |    32 |              |             0 |      |                                                                                |
-| M3 screws 14 mm       |                      |       |       |              |             0 |      | https://www.amazon.es/gp/product/B01AXUS4JU/ref=ppx_yo_dt_b_asin_title_o01_s02 |
-| Cables and connectors | various TODO specify |       |       |              |             0 | eur  |                                                                                |
-| Tools                 | various TODO specify |       |       |              |             0 | eur  |                                                                                |
-|-----------------------+----------------------+-------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
-| Total                 |                      |       |       |              |             0 | eur  |                                                                                |
+| name                                | model                | brand | units | price (unit) | price (total) | unit | Sourcing                                                                       |
+|-------------------------------------+----------------------+-------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
+| M3 screws 8 mm                      |                      |       |    61 |              |             0 |      | https://www.amazon.es/gp/product/B07FL4G1DZ/ref=ppx_yo_dt_b_asin_title_o03_s01 |
+| M3 screws 5 mm                      |                      |       |    32 |              |             0 |      |                                                                                |
+| M3 screws 14 mm                     |                      |       |       |              |             0 |      | https://www.amazon.es/gp/product/B01AXUS4JU/ref=ppx_yo_dt_b_asin_title_o01_s02 |
+| M4 screws 12 mm  (could be shorter) |                      |       |     2 |              |               |      |                                                                                |
+| M4 screws x mm  (optional)          |                      |       |     2 |              |               |      | TODO find out how short the M4 screws on the top of the PSU must be            |
+| Cables and connectors               | various TODO specify |       |       |              |             0 | eur  |                                                                                |
+| Tools                               | various TODO specify |       |       |              |             0 | eur  |                                                                                |
+|-------------------------------------+----------------------+-------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
+| Total                               |                      |       |       |              |             0 | eur  |                                                                                |
 #+TBLFM: $6=$4*$5::@>$6=vsum(@2$6..@-1$6)
 
 REM spectra and dyneema lines
