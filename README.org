@@ -52,3 +52,9 @@ List of stl files that are used from external developers:
 
 #+NAME:   fig:reprope-blue-ropes3
 [[./img/reprope5.jpg]]
+
+#+NAME:   fig:reprope-psu-box
+[[./img/reprope6.jpg]]
+
+#+NAME:   fig:reprope-psu-box-cable-management
+[[./img/reprope7.jpg]]
