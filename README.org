@@ -58,3 +58,6 @@ List of stl files that are used from external developers:
 
 #+NAME:   fig:reprope-psu-box-cable-management
 [[./img/reprope7.jpg]]
+
+#+NAME:   fig:reprope-ac-in-corner
+[[./img/reprope8.jpg]]
