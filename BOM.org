@@ -21,6 +21,7 @@
 | vslot t-nut adaptor for 3mm nuts (optional) |       77 | DONE  | https://www.thingiverse.com/thing:3050607/files           | MISSING                      | TODO: replace with a CAD parametric one, this one is creative commons but non-commercial           |
 | Distance tool (optional)                    |      0-1 | DONE  | [[./STL/DistanceTool-Body.stl]]                               | [[./CAD/DistanceTool.FCStd]]     | Convenience tool to easily place the motors in place.                                              |
 | AC In Corner                                |        1 | DONE  | [[./STL/AC-IN-plug-box-Body.stl]]                             | [[./CAD/AC-IN-plug-box.FCStd]]   | Require 1 insert, 3 bolts (TODO spec)                                                              |
+| cable guide left                            |        1 | DONE  | [[./STL/cable_guide-Body.stl]]                                | [[./CAD/cable_guide.FCStd]]      |                                                                                                    |
 
 * (vitamins/printed/CNCed) Some of the parts can be done in metal too
 
