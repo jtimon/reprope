@@ -4,3 +4,6 @@
 [submodule "firmware/klipper"]
 	path = firmware/klipper
 	url = https://github.com/Klipper3d/klipper
+[submodule "firmware/Marlin"]
+	path = firmware/Marlin
+	url = https://github.com/MarlinFirmware/Marlin
