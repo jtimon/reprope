@@ -1,3 +1,6 @@
 [submodule "firmware/RepRapFirmware"]
 	path = firmware/RepRapFirmware
 	url = https://github.com/Duet3D/RepRapFirmware
+[submodule "firmware/klipper"]
+	path = firmware/klipper
+	url = https://github.com/Klipper3d/klipper
