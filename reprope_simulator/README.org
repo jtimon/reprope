@@ -7,6 +7,7 @@ Tiny tool for calculating rope distances and to visualize a given head position.
 
 '''
 python3
+python3-pip
 python3.8-venv
 '''
 
@@ -33,7 +34,7 @@ pip3 install -r requirements.txt
 * Run
 
 '''
-python main.py
+python3 main.py
 '''
 
 * To deactivate the virtual envirnoment:
