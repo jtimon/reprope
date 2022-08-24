@@ -66,52 +66,47 @@ rope_points['g']['top'] = [pulley_distance_from_corner, max_y - pulley_distance_
 rope_points['h']['head'] = [head_pos_x, head_pos_y, head_pos_z]
 rope_points['h']['top'] = [pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
 
-ropes = dict()
+ropes_data = []
 
 for c in 'abcdefgh':
-    ropes[c] = line_from_points(rope_points[c]['head'], rope_points[c]['top'], name="Rope %s" % c)
+    ropes_data.append(line_from_points(rope_points[c]['head'], rope_points[c]['top'], name="Rope %s" % c))
     rope_length = calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])
     print("Stepper %s rope length: %s, steps: %s" % (c, rope_length, rope_length_to_motor_steps(rope_length)))
 
-data=[
-    # Frame
-                go.Scatter3d(x=[0, max_x], y=[0, 0], z=[max_z, max_z]),
-                go.Scatter3d(x=[0, 0], y=[0, max_y], z=[max_z, max_z]),
-                go.Scatter3d(x=[0, max_x], y=[max_y, max_y], z=[max_z, max_z]),
-                go.Scatter3d(x=[max_x, max_x], y=[max_y, 0], z=[max_z, max_z]),
-                go.Scatter3d(x=[0, max_x], y=[0, 0], z=[0, 0]),
-                go.Scatter3d(x=[0, 0], y=[0, max_y], z=[0, 0]),
-                go.Scatter3d(x=[0, max_x], y=[max_y, max_y], z=[0, 0]),
-                go.Scatter3d(x=[max_x, max_x], y=[max_y, 0], z=[0, 0]),
-                go.Scatter3d(x=[0, 0], y=[0, 0], z=[0, max_z]),
-                go.Scatter3d(x=[max_x, max_x], y=[0, 0], z=[0, max_z]),
-                go.Scatter3d(x=[max_x, max_x], y=[max_y, max_y], z=[0, max_z]),
-                go.Scatter3d(x=[0, 0], y=[max_y, max_y], z=[0, max_z]),
-
-    # Head
-                go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
-                go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z, head_pos_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
-                go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
-
-    # Ropes
-                ropes['a'],
-                ropes['b'],
-                ropes['c'],
-                ropes['d'],
-                ropes['e'],
-                ropes['f'],
-                ropes['g'],
-                ropes['h'],
+frame_data = [
+    go.Scatter3d(x=[0, max_x], y=[0, 0], z=[max_z, max_z]),
+    go.Scatter3d(x=[0, 0], y=[0, max_y], z=[max_z, max_z]),
+    go.Scatter3d(x=[0, max_x], y=[max_y, max_y], z=[max_z, max_z]),
+    go.Scatter3d(x=[max_x, max_x], y=[max_y, 0], z=[max_z, max_z]),
+    go.Scatter3d(x=[0, max_x], y=[0, 0], z=[0, 0]),
+    go.Scatter3d(x=[0, 0], y=[0, max_y], z=[0, 0]),
+    go.Scatter3d(x=[0, max_x], y=[max_y, max_y], z=[0, 0]),
+    go.Scatter3d(x=[max_x, max_x], y=[max_y, 0], z=[0, 0]),
+    go.Scatter3d(x=[0, 0], y=[0, 0], z=[0, max_z]),
+    go.Scatter3d(x=[max_x, max_x], y=[0, 0], z=[0, max_z]),
+    go.Scatter3d(x=[max_x, max_x], y=[max_y, max_y], z=[0, max_z]),
+    go.Scatter3d(x=[0, 0], y=[max_y, max_y], z=[0, max_z]),
 ]
+
+head_data = [
+    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
+    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z, head_pos_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
+    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
+]
+
+data = []
+data.extend(frame_data)
+data.extend(head_data)
+data.extend(ropes_data)
 
 fig = go.Figure(data)
 fig.show()
