@@ -1,12 +1,7 @@
 
-from math import sqrt
+from math import sqrt, pi
 
-import plotly.express as px
 import plotly.graph_objects as go
-
-# df = px.data.gapminder().query("country=='Brazil'")
-# print(df)
-
 
 # d = ((x2 - x1)2 + (y2 - y1)2 + (z2 - z1)2)1/2
 def calculate_distance_between_points(point_a, point_b):
@@ -15,11 +10,24 @@ def calculate_distance_between_points(point_a, point_b):
     delta_z = point_b[2] - point_a[2]
     return sqrt(delta_x ** 2 + delta_y ** 2 + delta_z ** 2)
 
+# for plotly
 def line_from_points(point_a, point_b, name=None):
     line = go.Scatter3d(x=[point_a[0], point_b[0]], y=[point_a[1], point_b[1]], z=[point_a[2], point_b[2]])
     if name:
         line.name = name
     return line
+
+spool_diameter = 30
+# step_angle = 1.8
+# 360 / step_angle = 200
+steps_per_motor_rev = 200
+# let's simplify and use the perimeter of the spool
+# not taking into account the z axis of the selenoid that the spool really is for now
+rope_length_per_rev = pi * spool_diameter
+length_per_step = rope_length_per_rev / steps_per_motor_rev
+
+def rope_length_to_motor_steps(rope_length):
+    return rope_length / length_per_step
 
 max_x = 260
 max_y = 260
@@ -62,7 +70,8 @@ ropes = dict()
 
 for c in 'abcdefgh':
     ropes[c] = line_from_points(rope_points[c]['head'], rope_points[c]['top'], name="Rope %s" % c)
-    print("Rope %s distance: %s" % (c, calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])))
+    rope_length = calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])
+    print("Stepper %s rope length: %s, steps: %s" % (c, rope_length, rope_length_to_motor_steps(rope_length)))
 
 data=[
     # Frame
