@@ -37,6 +37,8 @@ head_x = 40
 head_y = 40
 head_z = 40
 
+offset_nozzle_z = 20
+
 pulley_distance_from_corner = 20 + 15 + 42/2
 pulley_distance_from_frame = 15
 
@@ -96,6 +98,7 @@ data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
 data.extend(plot_cube_data([head_pos_x, head_pos_y, head_pos_z], [head_pos_x + head_x, head_pos_y + head_y, head_pos_z + head_z], name="head"))
 data.extend(ropes_data)
+data.append(line_from_points([head_pos_x + head_x / 2, head_pos_y + head_y / 2, head_pos_z], [head_pos_x + head_x / 2, head_pos_y + head_y / 2, head_pos_z - offset_nozzle_z], name="nozzle"))
 
 fig = go.Figure(data)
 fig.show()
