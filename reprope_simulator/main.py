@@ -73,21 +73,6 @@ for c in 'abcdefgh':
     rope_length = calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])
     print("Stepper %s rope length: %s, steps: %s" % (c, rope_length, rope_length_to_motor_steps(rope_length)))
 
-head_data = [
-    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z + head_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z]),
-    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y], z=[head_pos_z, head_pos_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y, head_pos_y], z=[head_pos_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x + head_x, head_pos_x + head_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
-    go.Scatter3d(x=[head_pos_x, head_pos_x], y=[head_pos_y + head_y, head_pos_y + head_y], z=[head_pos_z, head_pos_z + head_z]),
-]
-
 def plot_cube_data(min_point, max_point, name):
     cube_lines = [
         go.Scatter3d(x=[min_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[max_point[2], max_point[2]]),
@@ -109,7 +94,7 @@ def plot_cube_data(min_point, max_point, name):
 
 data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
-data.extend(head_data)
+data.extend(plot_cube_data([head_pos_x, head_pos_y, head_pos_z], [head_pos_x + head_x, head_pos_y + head_y, head_pos_z + head_z], name="head"))
 data.extend(ropes_data)
 
 fig = go.Figure(data)
