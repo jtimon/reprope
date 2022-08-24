@@ -1,0 +1,51 @@
+
+* Reprope simulator
+
+Tiny tool for calculating rope distances and to visualize a given head position.
+
+* Dependencies
+
+'''
+python3
+python3.8-venv
+'''
+
+* Installation
+
+First create a virtual envirnoment not to mess with your local:
+
+'''
+python3 -m venv venv
+'''
+
+To activate the environment (this is needed every time you want to work with the project):
+
+'''
+source venv/bin/activate
+'''
+
+Then:
+
+'''
+pip3 install -r requirements.txt
+'''
+
+* Run
+
+'''
+python main.py
+'''
+
+* To deactivate the virtual envirnoment:
+
+'''
+deactivate
+'''
+
+* To add new dependencies
+
+Install with pip3, then:
+
+'''
+pip3 freeze > requirements.txt
+'''
