@@ -44,7 +44,7 @@ pulley_distance_from_frame = 15
 
 head_pos_x = pulley_distance_from_corner
 head_pos_y = pulley_distance_from_corner
-head_pos_z = 0
+head_pos_z = offset_nozzle_z
 
 rope_points = dict()
 
@@ -94,11 +94,18 @@ def plot_cube_data(min_point, max_point, name):
         cube_lines[i].name = "%s%s" % (name, i)
     return cube_lines
 
+def plot_head_nozzle(head_pos):
+    data = plot_cube_data([head_pos[0], head_pos[1], head_pos[2]], [head_pos[0] + head_x, head_pos[1] + head_y, head_pos[2] + head_z], name="head")
+    data.append(line_from_points(
+        [head_pos[0] + head_x / 2, head_pos[1] + head_y / 2, head_pos[2]],
+        [head_pos[0] + head_x / 2, head_pos[1] + head_y / 2, head_pos[2] - offset_nozzle_z],
+        name="nozzle"))
+    return data
+
 data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
-data.extend(plot_cube_data([head_pos_x, head_pos_y, head_pos_z], [head_pos_x + head_x, head_pos_y + head_y, head_pos_z + head_z], name="head"))
+data.extend(plot_head_nozzle([head_pos_x, head_pos_y, head_pos_z]))
 data.extend(ropes_data)
-data.append(line_from_points([head_pos_x + head_x / 2, head_pos_y + head_y / 2, head_pos_z], [head_pos_x + head_x / 2, head_pos_y + head_y / 2, head_pos_z - offset_nozzle_z], name="nozzle"))
 
 fig = go.Figure(data)
 fig.show()
