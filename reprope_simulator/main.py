@@ -73,19 +73,20 @@ def plot_ropes_data(head_pos, head_dim):
     return ropes_data
 
 def plot_cube_data(min_point, max_point, name):
+    black_line = go.Line(color="black")
     cube_lines = [
-        go.Scatter3d(x=[min_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[max_point[2], max_point[2]]),
-        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], max_point[1]], z=[max_point[2], max_point[2]]),
-        go.Scatter3d(x=[min_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[max_point[2], max_point[2]]),
-        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], min_point[1]], z=[max_point[2], max_point[2]]),
-        go.Scatter3d(x=[min_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], min_point[2]]),
-        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], max_point[1]], z=[min_point[2], min_point[2]]),
-        go.Scatter3d(x=[min_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], min_point[2]]),
-        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], min_point[1]], z=[min_point[2], min_point[2]]),
-        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], max_point[2]]),
-        go.Scatter3d(x=[max_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], max_point[2]]),
-        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], max_point[2]]),
-        go.Scatter3d(x=[min_point[0], min_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], max_point[2]]),
+        go.Scatter3d(x=[min_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[max_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], max_point[1]], z=[max_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[max_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], min_point[1]], z=[max_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], min_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], max_point[1]], z=[min_point[2], min_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], min_point[2]], line=black_line),
+        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], min_point[1]], z=[min_point[2], min_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], min_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[max_point[0], max_point[0]], y=[min_point[1], min_point[1]], z=[min_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[max_point[0], max_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], max_point[2]], line=black_line),
+        go.Scatter3d(x=[min_point[0], min_point[0]], y=[max_point[1], max_point[1]], z=[min_point[2], max_point[2]], line=black_line),
     ]
     for i in range(0, len(cube_lines), 1):
         cube_lines[i].name = "%s%s" % (name, i)
