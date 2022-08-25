@@ -46,34 +46,35 @@ head_pos_x = pulley_distance_from_corner
 head_pos_y = pulley_distance_from_corner
 head_pos_z = offset_nozzle_z
 
-rope_points = dict()
+def plot_ropes_data():
+    # Init struct
+    rope_points = dict()
+    for c in 'abcdefgh':
+        rope_points[c] = dict()
 
-for c in 'abcdefgh':
-    rope_points[c] = dict()
+    rope_points['a']['head'] = [head_pos_x, head_pos_y + head_y, head_pos_z + head_z]
+    rope_points['a']['top'] = [pulley_distance_from_frame, pulley_distance_from_corner, max_z]
+    rope_points['b']['head'] = [head_pos_x + head_x, head_pos_y, head_pos_z]
+    rope_points['b']['top'] = [pulley_distance_from_corner, pulley_distance_from_frame, max_z]
+    rope_points['c']['head'] = [head_pos_x, head_pos_y, head_pos_z + head_z]
+    rope_points['c']['top'] = [max_x - pulley_distance_from_corner, pulley_distance_from_frame, max_z]
+    rope_points['d']['head'] = [head_pos_x + head_x, head_pos_y + head_y, head_pos_z]
+    rope_points['d']['top'] = [max_x - pulley_distance_from_frame, pulley_distance_from_corner, max_z]
+    rope_points['e']['head'] = [head_pos_x + head_x, head_pos_y, head_pos_z + head_z]
+    rope_points['e']['top'] = [max_x - pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
+    rope_points['f']['head'] = [head_pos_x, head_pos_y + head_y, head_pos_z]
+    rope_points['f']['top'] = [max_x - pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
+    rope_points['g']['head'] = [head_pos_x + head_x, head_pos_y + head_y, head_pos_z + head_z]
+    rope_points['g']['top'] = [pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
+    rope_points['h']['head'] = [head_pos_x, head_pos_y, head_pos_z]
+    rope_points['h']['top'] = [pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
 
-rope_points['a']['head'] = [head_pos_x, head_pos_y + head_y, head_pos_z + head_z]
-rope_points['a']['top'] = [pulley_distance_from_frame, pulley_distance_from_corner, max_z]
-rope_points['b']['head'] = [head_pos_x + head_x, head_pos_y, head_pos_z]
-rope_points['b']['top'] = [pulley_distance_from_corner, pulley_distance_from_frame, max_z]
-rope_points['c']['head'] = [head_pos_x, head_pos_y, head_pos_z + head_z]
-rope_points['c']['top'] = [max_x - pulley_distance_from_corner, pulley_distance_from_frame, max_z]
-rope_points['d']['head'] = [head_pos_x + head_x, head_pos_y + head_y, head_pos_z]
-rope_points['d']['top'] = [max_x - pulley_distance_from_frame, pulley_distance_from_corner, max_z]
-rope_points['e']['head'] = [head_pos_x + head_x, head_pos_y, head_pos_z + head_z]
-rope_points['e']['top'] = [max_x - pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
-rope_points['f']['head'] = [head_pos_x, head_pos_y + head_y, head_pos_z]
-rope_points['f']['top'] = [max_x - pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
-rope_points['g']['head'] = [head_pos_x + head_x, head_pos_y + head_y, head_pos_z + head_z]
-rope_points['g']['top'] = [pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
-rope_points['h']['head'] = [head_pos_x, head_pos_y, head_pos_z]
-rope_points['h']['top'] = [pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
-
-ropes_data = []
-
-for c in 'abcdefgh':
-    ropes_data.append(line_from_points(rope_points[c]['head'], rope_points[c]['top'], name="Rope %s" % c))
-    rope_length = calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])
-    print("Stepper %s rope length: %s, steps: %s" % (c, rope_length, rope_length_to_motor_steps(rope_length)))
+    ropes_data = []
+    for c in 'abcdefgh':
+        ropes_data.append(line_from_points(rope_points[c]['head'], rope_points[c]['top'], name="Rope %s" % c))
+        rope_length = calculate_distance_between_points(rope_points[c]['head'], rope_points[c]['top'])
+        print("Stepper %s rope length: %s, steps: %s" % (c, rope_length, rope_length_to_motor_steps(rope_length)))
+    return ropes_data
 
 def plot_cube_data(min_point, max_point, name):
     cube_lines = [
@@ -105,7 +106,7 @@ def plot_head_nozzle(head_pos):
 data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
 data.extend(plot_head_nozzle([head_pos_x, head_pos_y, head_pos_z]))
-data.extend(ropes_data)
+data.extend(plot_ropes_data())
 
 fig = go.Figure(data)
 fig.show()
