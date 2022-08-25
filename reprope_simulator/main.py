@@ -32,39 +32,37 @@ def rope_length_to_motor_steps(rope_length):
 max_x = 260
 max_y = 260
 max_z = 240
-
+# head constants after conf
 head_dim = [40, 40, 40]
-
 offset_nozzle_z = 20
 
 pulley_distance_from_corner = 20 + 15 + 42/2
 pulley_distance_from_frame = 15
 
-head_pos_x = pulley_distance_from_corner
-head_pos_y = pulley_distance_from_corner
-head_pos_z = offset_nozzle_z
+# Head variables
+head_pos = [pulley_distance_from_corner, pulley_distance_from_corner, offset_nozzle_z]
 
-def plot_ropes_data(head_pos_x, head_pos_y, head_pos_z, head_dim):
+def plot_ropes_data(head_pos, head_dim):
     # Init struct
     rope_points = dict()
     for c in 'abcdefgh':
         rope_points[c] = dict()
 
-    rope_points['a']['head'] = [head_pos_x, head_pos_y + head_dim[1], head_pos_z + head_dim[2]]
+    rope_points['a']['head'] = [head_pos[0], head_pos[1] + head_dim[1], head_dim[2] + head_dim[2]]
     rope_points['a']['top'] = [pulley_distance_from_frame, pulley_distance_from_corner, max_z]
-    rope_points['b']['head'] = [head_pos_x + head_dim[0], head_pos_y, head_pos_z]
+    rope_points['b']['head'] = [head_pos[0] + head_dim[0], head_pos[1], head_dim[2]]
     rope_points['b']['top'] = [pulley_distance_from_corner, pulley_distance_from_frame, max_z]
-    rope_points['c']['head'] = [head_pos_x, head_pos_y, head_pos_z + head_dim[2]]
+    rope_points['c']['head'] = [head_pos[0], head_pos[1], head_dim[2] + head_dim[2]]
     rope_points['c']['top'] = [max_x - pulley_distance_from_corner, pulley_distance_from_frame, max_z]
-    rope_points['d']['head'] = [head_pos_x + head_dim[0], head_pos_y + head_dim[1], head_pos_z]
+    rope_points['d']['head'] = [head_pos[0] + head_dim[0], head_pos[1] + head_dim[1], head_dim[2]]
     rope_points['d']['top'] = [max_x - pulley_distance_from_frame, pulley_distance_from_corner, max_z]
-    rope_points['e']['head'] = [head_pos_x + head_dim[0], head_pos_y, head_pos_z + head_dim[2]]
+    rope_points['e']['head'] = [head_pos[0] + head_dim[0], head_pos[1], head_dim[2] + head_dim[2]]
     rope_points['e']['top'] = [max_x - pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
-    rope_points['f']['head'] = [head_pos_x, head_pos_y + head_dim[1], head_pos_z]
+    rope_points['f']['head'] = [head_pos[0], head_pos[1] + head_dim[1], head_dim[2]]
     rope_points['f']['top'] = [max_x - pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
-    rope_points['g']['head'] = [head_pos_x + head_dim[0], head_pos_y + head_dim[1], head_pos_z + head_dim[2]]
+    rope_points['g']['head'] = [head_pos[0] + head_dim[0], head_pos[1] + head_dim[1], head_dim[2] + head_dim[2]]
     rope_points['g']['top'] = [pulley_distance_from_corner, max_y - pulley_distance_from_frame, max_z]
-    rope_points['h']['head'] = [head_pos_x, head_pos_y, head_pos_z]
+    rope_points['h']['head'] = [head_pos[0], head_pos[1], head_dim[2]]
     rope_points['h']['top'] = [pulley_distance_from_frame, max_y - pulley_distance_from_corner, max_z]
 
     ropes_data = []
@@ -103,8 +101,8 @@ def plot_head_nozzle(head_pos):
 
 data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
-data.extend(plot_head_nozzle([head_pos_x, head_pos_y, head_pos_z]))
-data.extend(plot_ropes_data(head_pos_x, head_pos_y, head_pos_z, head_dim))
+data.extend(plot_head_nozzle([head_pos[0], head_pos[1], head_dim[2]]))
+data.extend(plot_ropes_data(head_pos, head_dim))
 
 fig = go.Figure(data)
 fig.show()
