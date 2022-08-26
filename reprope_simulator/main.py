@@ -40,7 +40,7 @@ pulley_distance_from_corner = 20 + 15 + 42/2
 pulley_distance_from_frame = 15
 
 # Head variables
-head_pos = [pulley_distance_from_corner, pulley_distance_from_corner, offset_nozzle_z]
+head_pos = [pulley_distance_from_frame + head_dim[0] / 2, pulley_distance_from_frame + head_dim[1] / 2, offset_nozzle_z]
 
 def plot_ropes_data(head_pos, head_dim):
     # Init struct
@@ -104,6 +104,7 @@ data = []
 data.extend(plot_cube_data([0, 0, 0], [max_x, max_y, max_z], name="frame"))
 data.extend(plot_head_nozzle([head_pos[0], head_pos[1], head_dim[2]]))
 data.extend(plot_ropes_data(head_pos, head_dim))
+data.extend(plot_cube_data([pulley_distance_from_frame + head_dim[0] / 2, pulley_distance_from_frame + head_dim[1] / 2, 0], [max_x - pulley_distance_from_frame - head_dim[0] / 2, max_y - pulley_distance_from_frame - head_dim[1] / 2, max_z - head_dim[2] - offset_nozzle_z], name="printing_area"))
 
 fig = go.Figure(data)
 fig.show()
