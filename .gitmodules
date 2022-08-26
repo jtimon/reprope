@@ -1,0 +1,3 @@
+[submodule "firmware/RepRapFirmware"]
+	path = firmware/RepRapFirmware
+	url = https://github.com/jtimon/RepRapFirmware
