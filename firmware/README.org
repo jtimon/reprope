@@ -1,0 +1,60 @@
+* Firmware
+
+Ideally, the reprope kynematics will be eventually supported in all three most popular free software 3d printing firmwares:
+
+- [ ] Reprap firmware (RRF)
+- [ ] Klipper
+- [ ] Marlin
+
+The plan is to implement, test and pull request them to their original repositories in that order.
+A forked branch of the projects will be kept here as submodules and in github/jtimon with their respective names.
+Ideally, in the end, a PR will be merged for each of the projects and the submodule can be erased here.
+
+In the case of RRF, since I'm only going to test with non duet hardware for now, I'm not forking the original repository:
+
+https://github.com/Duet3D/RepRapFirmware
+
+but a different one that supports STM32F4 based boards such as the BTT octopus in the current BOM:
+
+https://github.com/gloomyandy/RepRapFirmware
+
+Still, the PR would be to the original repository, and only with the
+reprope kynematic specific changes, so there will be a duet-reprope
+branch and a stm32-reprope branch. The latter may stay here for a bit
+longer until the gloomy version gets the next version including the
+new kynematics.
+
+* TODO [0/3] Firmwares
+- [ ] Reprap Firmware (RRF)
+- [ ] Klipper
+- [ ] Marlin
+
+* Why reprap firmware first?
+
+Feel free to beat me to it in klipper.
+Marlin I think is going to be harder because of the lack of
+polymorphism, at least harder for me.
+I may never do it in the case of marlin, quite honestly, but it would
+be cool to have the new kynematics in all three.
+
+It can be cheaper per unit using RRF because it doesn't strictly need
+a raspbery pi, which are getting harder to get these days.
+Besides, that's a whole linux system, many more things can go wrong
+with that.
+
+Whatever the order, I really want to do it for both RRF and klipper at
+the very least. Sorry, Marlin just seems like too much work, at a glance.
+Perhaps it's easier for somebody else who knows it better to port the
+new kynematics, once it is done in other firmwares.
+No warranties for anything anyway besides whatever gets done being
+free software.
+
+Another reason to do RRF first is that I can look at the tested and
+working hangprinter kynematics implementation in there.
+In my best hopes, once I port the rerope kynematics from RRF to
+klipper, I will understand things enough to complete the port of the
+hangprinter to klipper, which seems to be:
+
+https://github.com/Klipper3d/klipper/blob/master/klippy/kinematics/winch.py
+
+But, hey, it's well documented that some things are not implemented.
