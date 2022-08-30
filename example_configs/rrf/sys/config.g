@@ -15,17 +15,24 @@ M586 P1 S0                                    ; disable FTP
 M586 P2 S0                                    ; disable Telnet
 
 ; Drives
-M569 P0 S1                                    ; physical drive 0 goes forwards using default driver timings
-M569 P1 S1                                    ; physical drive 1 goes forwards using default driver timings
-M569 P2 S1                                    ; physical drive 2 goes forwards using default driver timings
-M569 P3 S1                                    ; physical drive 3 goes forwards using default driver timings
-M584 X0 Y1 Z2 E3                              ; set drive mapping
-M350 X16 Y16 Z16 E16 I1                       ; configure microstepping with interpolation
-M92 X80.00 Y80.00 Z400.00 E420.00             ; set steps per mm
-M566 X900.00 Y900.00 Z60.00 E120.00           ; set maximum instantaneous speed changes (mm/min)
-M203 X6000.00 Y6000.00 Z180.00 E1200.00       ; set maximum speeds (mm/min)
-M201 X500.00 Y500.00 Z20.00 E250.00           ; set accelerations (mm/s^2)
-M906 X800 Y800 Z800 E800 I30                  ; set motor currents (mA) and motor idle factor in per cent
+M569 P0 S1 D3 V40                             ; physical drive 0 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 1 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 2 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 3 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 4 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 5 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 6 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S1 D3 V40                             ; physical drive 7 goes forwards using TMC2209 driver timings (Stealthchop)
+M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
+; TODO will this work? UVWABCD not allowed
+M350 X16 Y16 Z16 U16 V16 W16 A16 B16 I1       ; configure microstepping with interpolation
+; pi * 30 / 200 = length_per_step = pi * spool_diameter / steps_per_motor_rev = 0.47123889803
+; TODO adapt parameters to reprope kynematics
+M92 X80 Y80 Z80 U80 V80 W80 A80 B80 ; set steps per mm
+M566 X900.00 Y900.00 Z900.00 U900.00 V900.00 W900.00 A900.00 B900.00 ; set maximum instantaneous speed changes (mm/min)
+M203 X6000.00 Y6000.00 Z6000.00 U6000.00 V6000.00 W6000.00 A6000.00 B6000.00 ; set maximum speeds (mm/min)
+M201 X500.00 Y500.00 Z500.00 A500.00 B500.00 C500.00 D500.00 U500.00 ; set accelerations (mm/s^2)
+M906 X800 Y800 Z800 U800 V800 W800 A800 B800 I30                  ; set motor currents (mA) and motor idle factor in per cent
 M84 S30                                       ; Set idle timeout
 
 ; Axis Limits
@@ -33,9 +40,18 @@ M208 X0 Y0 Z0 S1                              ; set axis minima
 M208 X230 Y210 Z200 S0                        ; set axis maxima
 
 ; Endstops
+M915 P0:1:2:3:4:5:6:7 S-127 H10 R1 ; Set very sensible of stall detect
 M574 X1 S3                                    ; configure sensorless endstop for low end on X
-M574 Y1 S1 P"ystop"                           ; configure switch-type (e.g. microswitch) endstop for low end on Y via pin ystop
-M574 Z1 S2                                    ; configure Z-probe endstop for low end on Z
+M574 Y1 S3                                    ; configure sensorless endstop for low end on Y
+M574 Z1 S3                                    ; configure sensorless endstop for low end on Z
+M574 U1 S3                                    ; configure sensorless endstop for low end on U
+M574 V1 S3                                    ; configure sensorless endstop for low end on V
+M574 W1 S3                                    ; configure sensorless endstop for low end on W
+M574 A1 S3                                    ; configure sensorless endstop for low end on A
+M574 B1 S3                                    ; configure sensorless endstop for low end on B
+
+; M574 Y1 S1 P"ystop"                           ; configure switch-type (e.g. microswitch) endstop for low end on Y via pin ystop
+; M574 Z1 S2                                    ; configure Z-probe endstop for low end on Z
 
 ; Z-Probe
 M950 S0 C"servo0"                             ; create servo pin 0 for BLTouch
@@ -63,4 +79,3 @@ G10 P0 R0 S0                                  ; set initial tool 0 active and st
 
 ; Miscellaneous
 M575 P1 S2 B57600                             ; enable support for tft
-
