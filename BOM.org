@@ -40,8 +40,9 @@
 | main board                              | STM32F429ZGT6 (Octopus Pro) | BIGTREETECH   |     1 |        92.99 |         92.99 | eur  | https://www.amazon.es/gp/product/B09JC2NR1L/ref=ppx_yo_dt_b_asin_title_o07_s01 |
 | Power Source Unit (PSU)                 | LRS-200-24                  | MEANWELL      |     1 |        19.86 |         19.86 | eur  | https://www.amazon.es/gp/product/B07F29RHNP/ref=ppx_yo_dt_b_asin_title_o03_s01 |
 | bearings 633z (3mm x 13mm x 5 mm) (x16) | 633z (3mm x 13mm x 5 mm)    |               |    20 |        1.372 |         27.44 | eur  | https://www.makerbeam.com/makerbeam-bearings-10p-for-makerbeam.html            |
+| wifi board                              | ESP8266 WiFi                | BIGTREETECH   |     1 |        10.25 |         10.25 | eur  | https://biqu.equipment/products/bigtreetech-esp8266                            |
 |-----------------------------------------+-----------------------------+---------------+-------+--------------+---------------+------+--------------------------------------------------------------------------------|
-| Total                                   |                             |               |       |              |        311.89 | eur  |                                                                                |
+| Total                                   |                             |               |       |              |        322.14 | eur  |                                                                                |
 #+TBLFM: $6=$4*$5::@>$6=vsum(@2$6..@-1$6)
 
 ** Vitamins cheap/quantity
