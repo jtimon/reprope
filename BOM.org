@@ -23,6 +23,7 @@
 | main box                                    |        1 | DONE  | [[./STL/reprope-BoxBody.stl]]                                 | [[./CAD/reprope.FCStd]]          |                                                                                                    |
 | opctopus-like support                       |        1 | DONE  | [[./STL/reprope-BoardSupportBody.stl]]                        | [[./CAD/reprope.FCStd]]          |                                                                                                    |
 | Down cable slide                            |        1 | DONE  | [[./STL/reprope-DownSlideBody.stl]]                           | [[./CAD/reprope.FCStd]]          |                                                                                                    |
+| PSU cover                                   |        1 | DONE  | [[./STL/reprope-PSUCoverBody.stl]]                           | [[./CAD/reprope.FCStd]]          |                                                                                                    |
 
 * (vitamins/printed/CNCed) Some of the parts can be done in metal too
 
