@@ -12,9 +12,15 @@
 ; G30                     ; home Z by probing the bed
 
 ; Uncomment the following lines to lift Z after probing
-;G91                    ; relative positioning
-;G1 Z5 F100             ; lift Z relative to current position
-;G90                    ; absolute positioning
+; G91                    ; relative positioning
+; G1 Z5 F100             ; lift Z relative to current position
+; G90                    ; absolute positioning
 
 ; TODO replace this with some actual homing
-G92 X100 Y100 Z100 U100 V100 W100 A100 B100
+; G92 X0 Y0 Z0 U0 V0 W0 A0 B0
+G92 X0 Y0 Z0
+
+
+; G1 X0 Y0 Z0
+
+; G1 X0 Y0 Z0 U0 V0 W0 A0 B0

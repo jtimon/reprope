@@ -14,17 +14,41 @@ M586 P0 S1                                    ; enable HTTP
 M586 P1 S0                                    ; disable FTP
 M586 P2 S0                                    ; disable Telnet
 
+; Logging
+M929 P"log.txt" S0 ; start logging to file eventlog.txt
+
+; Axis and motor configuration (example hangprinter config)
+; M569 P0 S1 ; drive 0 (X motor output aka A) goes forwards
+; M569 P1 S1 ; drive 1 (Y motor output aka B) goes forwards
+; M569 P2 S1 ; drive 2 (Z motor output aka C) goes forwards
+; M569 P3 S1 ; drive 3 (extruder) goes forwards
+; M569 P4 S1 ; drive 4 (E1 motor output aka U aka D) goes forwards
+; M584 X0 Y1 Z2 E3 U4 ; create U axis for the D motor, attached to the E1 motor connector
+; M669 K6 A0.0:-2163.0:-75.5 B-1841.0:741.0:-75.5 C1639.0:1404.0:-75.5 D0:0:3250.5 P1500 ; set Hangprinter kinematics parameters
+; M92 X101.86 Y101.86 Z101.85 U101.86 ; set steps/mm for each spool
+; M208 S0 Z1500 ; maximum height 1500mm
+; M208 S1 Z-5 ; minimum height -5mm
+; M203 X6000 Y6000 Z6000 E3600 ; maximum linear speeds mm/minute
+; M906 X1000 Y1000 Y1000 E1000 ; set motor currents (mA)
+
 ; Drives
 M569 P0 S1 D3 V40                             ; physical drive 0 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 1 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 2 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 3 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 4 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 5 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 6 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P0 S1 D3 V40                             ; physical drive 7 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P1 S1 D3 V40                             ; physical drive 1 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P2 S1 D3 V40                             ; physical drive 2 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P3 S1 D3 V40                             ; physical drive 3 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P4 S1 D3 V40                             ; physical drive 4 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P5 S1 D3 V40                             ; physical drive 5 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P6 S1 D3 V40                             ; physical drive 6 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P7 S1 D3 V40                             ; physical drive 7 goes forwards using TMC2209 driver timings (Stealthchop)
 M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
-; TODO will this work? UVWABCD not allowed
+
+; set Hangprinter kinematics parameters
+; M669 K6 N8 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 G-74.0:-115.0:250.0 H-115.0:-74.0:250.0 P100
+; M669 K6 N4 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0
+; M666 Q0.007 R15.0:15.0:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2:2:2 O1:1:1:1:1:1:1:1 L20:20:20:20:20:20:20:20 H255:255:255:255:255:255:255:255 H25:25:25:25:25:25:25:25
+
+M669 K6 A0.0:-2163.0:-75.5 B-1841.0:741.0:-75.5 C1639.0:1404.0:-75.5 D0:0:3250.5 P1500 ; set Hangprinter kinematics parameters
+
 M350 X16 Y16 Z16 U16 V16 W16 A16 B16 I1       ; configure microstepping with interpolation
 ; pi * 30 / 200 = length_per_step = pi * spool_diameter / steps_per_motor_rev = 0.47123889803
 ; TODO adapt parameters to reprope kynematics
@@ -36,46 +60,49 @@ M906 X800 Y800 Z800 U800 V800 W800 A800 B800 I30                  ; set motor cu
 M84 S30                                       ; Set idle timeout
 
 ; Axis Limits
-M208 X0 Y0 Z0 S1                              ; set axis minima
-M208 X230 Y210 Z200 S0                        ; set axis maxima
+; M208 X0 Y0 Z0 S1                              ; set axis minima
+; M208 X230 Y210 Z200 S0                        ; set axis maxima
+; M208 Z-4 S1                              ; set axis minima
+; M208 Z200 S0                        ; set axis maxima
 
 ; Endstops
-M915 P0:1:2:3:4:5:6:7 S-127 H10 R1 ; Set very sensible of stall detect
-M574 X1 S3                                    ; configure sensorless endstop for low end on X
-M574 Y1 S3                                    ; configure sensorless endstop for low end on Y
-M574 Z1 S3                                    ; configure sensorless endstop for low end on Z
-M574 U1 S3                                    ; configure sensorless endstop for low end on U
-M574 V1 S3                                    ; configure sensorless endstop for low end on V
-M574 W1 S3                                    ; configure sensorless endstop for low end on W
-M574 A1 S3                                    ; configure sensorless endstop for low end on A
-M574 B1 S3                                    ; configure sensorless endstop for low end on B
+; M915 P0:1:2:3:4:5:6:7 S-127 H10 R1 ; Set very sensible of stall detect
+; M915 P0:1:2:3:4:5:6:7 S40 H10 R1 ; Set very sensible of stall detect
+; M574 X1 S3                                    ; configure sensorless endstop for low end on X
+; M574 Y1 S3                                    ; configure sensorless endstop for low end on Y
+; M574 Z1 S3                                    ; configure sensorless endstop for low end on Z
+; M574 U1 S3                                    ; configure sensorless endstop for low end on U
+; M574 V1 S3                                    ; configure sensorless endstop for low end on V
+; M574 W1 S3                                    ; configure sensorless endstop for low end on W
+; M574 A1 S3                                    ; configure sensorless endstop for low end on A
+; M574 B1 S3                                    ; configure sensorless endstop for low end on B
 
 ; M574 Y1 S1 P"ystop"                           ; configure switch-type (e.g. microswitch) endstop for low end on Y via pin ystop
 ; M574 Z1 S2                                    ; configure Z-probe endstop for low end on Z
 
 ; Z-Probe
-M950 S0 C"servo0"                             ; create servo pin 0 for BLTouch
-M558 P9 C"^probe" H5 F120 T6000               ; set Z probe type to bltouch and the dive height + speeds
-G31 P500 X0 Y0 Z2.5                           ; set Z probe trigger value, offset and trigger height
-M557 X15:215 Y15:195 S20                      ; define mesh grid
+; M950 S0 C"servo0"                             ; create servo pin 0 for BLTouch
+; M558 P9 C"^probe" H5 F120 T6000               ; set Z probe type to bltouch and the dive height + speeds
+; G31 P500 X0 Y0 Z2.5                           ; set Z probe trigger value, offset and trigger height
+; M557 X15:215 Y15:195 S20                      ; define mesh grid
 
 ; Heaters
-M140 H-1                                      ; disable heated bed (overrides default heater mapping)
-M308 S0 P"e0temp" Y"thermistor" T100000 B4092 ; configure sensor 0 as thermistor on pin e0temp
-M950 H0 C"e0heat" T0                          ; create nozzle heater output on e0heat and map it to sensor 0
-M307 H0 B0 S1.00                              ; disable bang-bang mode for heater  and set PWM limit
-M143 H0 S120                                  ; set temperature limit for heater 0 to 120C
+; M140 H-1                                      ; disable heated bed (overrides default heater mapping)
+; M308 S0 P"e0temp" Y"thermistor" T100000 B4092 ; configure sensor 0 as thermistor on pin e0temp
+; M950 H0 C"e0heat" T0                          ; create nozzle heater output on e0heat and map it to sensor 0
+; M307 H0 B0 S1.00                              ; disable bang-bang mode for heater  and set PWM limit
+; M143 H0 S120                                  ; set temperature limit for heater 0 to 120C
 
 ; Fans
-M950 F0 C"fan0" Q500                          ; create fan 0 on pin fan0 and set its frequency
-M106 P0 S0 H T45                              ; set fan 0 value. Thermostatic control is turned on
+; M950 F0 C"fan0" Q500                          ; create fan 0 on pin fan0 and set its frequency
+; M106 P0 S0 H T45                              ; set fan 0 value. Thermostatic control is turned on
 
 ; Tools
-M563 P0 D0 F0                                 ; define tool 0
-G10 P0 X0 Y0 Z0                               ; set tool 0 axis offsets
-G10 P0 R0 S0                                  ; set initial tool 0 active and standby temperatures to 0C
+; M563 P0 D0 F0                                 ; define tool 0
+; G10 P0 X0 Y0 Z0                               ; set tool 0 axis offsets
+; G10 P0 R0 S0                                  ; set initial tool 0 active and standby temperatures to 0C
 
 ; Custom settings are not defined
 
 ; Miscellaneous
-M575 P1 S2 B57600                             ; enable support for tft
+; M575 P1 S2 B57600                             ; enable support for tft
