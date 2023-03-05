@@ -32,14 +32,14 @@ M929 P"log.txt" S0 ; start logging to file eventlog.txt
 ; M906 X1000 Y1000 Y1000 E1000 ; set motor currents (mA)
 
 ; Drives
-M569 P0 S1 D3 V40                             ; physical drive 0 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P1 S1 D3 V40                             ; physical drive 1 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P2 S1 D3 V40                             ; physical drive 2 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P3 S1 D3 V40                             ; physical drive 3 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P4 S1 D3 V40                             ; physical drive 4 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P5 S1 D3 V40                             ; physical drive 5 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P6 S1 D3 V40                             ; physical drive 6 goes forwards using TMC2209 driver timings (Stealthchop)
-M569 P7 S1 D3 V40                             ; physical drive 7 goes forwards using TMC2209 driver timings (Stealthchop)
+M569 P0 S0 D3 V40                             ; physical drive 0 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P1 S0 D3 V40                             ; physical drive 1 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P2 S0 D3 V40                             ; physical drive 2 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P3 S0 D3 V40                             ; physical drive 3 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P4 S0 D3 V40                             ; physical drive 4 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P5 S0 D3 V40                             ; physical drive 5 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P6 S0 D3 V40                             ; physical drive 6 goes backwards using TMC2209 driver timings (Stealthchop)
+M569 P7 S0 D3 V40                             ; physical drive 7 goes backwards using TMC2209 driver timings (Stealthchop)
 M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
 
 ; set Hangprinter kinematics parameters
