@@ -51,7 +51,7 @@ free software.
 
 Another reason to do RRF first is that I can look at the tested and
 working hangprinter kynematics implementation in there.
-In my best hopes, once I port the rerope kynematics from RRF to
+In my best hopes, once I port the reprope kynematics from RRF to
 klipper, I will understand things enough to complete the port of the
 hangprinter to klipper, which seems to be:
 
