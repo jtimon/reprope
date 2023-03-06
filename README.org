@@ -16,9 +16,40 @@ simply by using levers, pulleys, ropes and wooden stuff.
 
 Anyway, it was just a joke, it can be removed with a commit.
 
+* hangprinter
+
+The reprope extends the hangprinter, with a special focus on adding
+optional features like scaling it down, allowing squared printing
+volumes, allowing extra anchors, allowing extra axes or even getting
+use of those extra 3 90 degree axes to get tool chaning without an
+extra servo, just rotate the head 90 degrees in 3 directions as you whish.
+
+* Firmware
+
+For now there is only work in progress firmware extending
+reprap firmware (RRF) implementation of the hangprinter:
+
+https://github.com/Duet3D/RepRapFirmware/pulls/jtimon
+
+There may be some binaries in bin to test. But they shouldn't be
+assumed to work on duet. Most of them will be compiled for the
+stm32f4-wifi config on:
+
+https://github.com/gloomyandy/RepRapFirmware
+
 * Copyright
 
 The copyright of this whole project belongs to the RepRope project developers.
+
+The copyright for other free software and hardware projects this
+depends on is described in theirr own projects.
+
+This project is intended to be on free software licenses as light as
+possible.
+
+I will try to keep dependencies free.
+In that sense, the hangprinter and reprap firmware seem to be
+following free software licenses practices.
 
 * License
 
