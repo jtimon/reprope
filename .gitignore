@@ -1,2 +1,8 @@
 *~
+
+# Emacs backup and auto-save files
+*~
+\#*\#
+
+# Object and intermediate files
 *.FCStd1
