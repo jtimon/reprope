@@ -1,6 +1,0 @@
-[submodule "firmware/RepRapFirmware"]
-	path = firmware/RepRapFirmware
-	url = https://github.com/jtimon/RepRapFirmware
-[submodule "firmware/klipper"]
-	path = firmware/klipper
-	url = https://github.com/jtimon/klipper
