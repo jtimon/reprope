@@ -39,47 +39,48 @@ M569 P3 S0 D3 V40                             ; physical drive 3 goes backwards 
 M569 P4 S0 D3 V40                             ; physical drive 4 goes backwards using TMC2209 driver timings (Stealthchop)
 M569 P5 S0 D3 V40                             ; physical drive 5 goes backwards using TMC2209 driver timings (Stealthchop)
 M569 P6 S0 D3 V40                             ; physical drive 6 goes backwards using TMC2209 driver timings (Stealthchop)
-M569 P7 S0 D3 V40                             ; physical drive 7 goes backwards using TMC2209 driver timings (Stealthchop)
-M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
+; M569 P7 S0 D3 V40                             ; physical drive 7 goes backwards using TMC2209 driver timings (Stealthchop)
+; M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
 
 ; set Hangprinter kinematics parameters
 ; M669 K6 N8 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 G-74.0:-115.0:250.0 H-115.0:-74.0:250.0 P100
 ; M669 K6 N6 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 P100
 ; M669 K6 N7 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 H-74.0:-115.0:250.0 P100
 
-; Reprope setup 9 snchors:
+; Reprope setup 8 anchors:
 ; M669 K6 N9 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 H-74.0:-115.0:250.0 I-115.0:-74.0:250.0 P100
-; M666 Q0.007 R15.0:15.0:15.0:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2:2:2:2 O1:1:1:1:1:1:1:1:1 L20:20:20:20:20:20:20:20:20 H255:255:255:255:255:255:255:255:255 H25:25:25:25:25:25:25:25:25
+; M666 Q0.007 R15.0:15.0:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2:2:2 O1:1:1:1:1:1:1:1 L20:20:20:20:20:20:20:20 H255:255:255:255:255:255:255:255 H25:25:25:25:25:25:25:25
+; M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
 
-; Reprope setup 8 snchors (default CAD):
-M669 K6 N8 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 H-74.0:-115.0:250.0 P100
-M666 Q0.007 R15.0:15.0:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2:2:2 O1:1:1:1:1:1:1:1 L20:20:20:20:20:20:20:20 H255:255:255:255:255:255:255:255:255 H25:25:25:25:25:25:25:25
+; Reprope setup 4 anchors:
+M584 X0 Y2 Z4 U6 R0               ; set drive mapping
+M669 K6 N4 A-115.0:74.0:250.0 B74.0:115.0:250.0 C115.0:-74.0:250.0 D-74.0:-115.0:250.0 P100
+M666 Q0.007 R15.0:15.0:15.0:15.0 U2:2:2:2 O1:1:1:1 L20:20:20:20 H255:255:255:255 H25:25:25:25
+M350 X16 Y16 Z16 I1       ; configure 1/16 microstepping with interpolation
+M92 X80 Y80 Z80 U80 ; set steps per mm
+M566 X900.00 Y900.00 Z900.00 U900.00 ; set maximum instantaneous speed changes (mm/min)
+M203 X18000.00 Y18000.00 Z18000.00 U18000.00 ; set maximum speeds (mm/min)
+M201 X2000.00 Y2000.00 Z2000.00 U2000.00 ; set accelerations (mm/s^2)
+; M906 X800 Y800 Z800 U800 I30                  ; set motor currents (mA) and motor idle factor in per cent
+; M906 X1200 Y1200 Z1200 U1200    ; set motor currents (mA)
+M906 I30                        ; Idle current percentage
 
-; Reprope setup 7 snchors:
-M669 K6 N7 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 P100
-M666 Q0.007 R15.0:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2:2 O1:1:1:1:1:1:1 L20:20:20:20:20:20:20 H255:255:255:255:255:255:255 H25:25:25:25:25:25:25
+M204 P1500 T2000 ; Set printing acceleration and travel accelerations
 
-; Reprope setup 6 snchors:
-M669 K6 N6 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E74.0:-115.0:250.0 P100
-M666 Q0.007 R:15.0:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2:2 O1:1:1:1:1:1 L20:20:20:20:20:20 H255:255:255:255:255:255 H25:25:25:25:25:25
+; M350 X16 Y16 Z16 U16 V16 W16 A16 B16 I1       ; configure microstepping with interpolation
+; M350 X16 Y16 Z16 I1       ; configure 1/16 microstepping with interpolation
 
-; Reprope setup 5 snchors:
-M669 K6 N5 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C115.0:74.0:250.0 D74.0:-115.0:250.0 P100
-M666 Q0.007 R:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2 O1:1:1:1:1 L20:20:20:20:20 H255:255:255:255:255 H25:25:25:25:25
-
-; Reprope setup 4 snchors:
-M669 K6 N4 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C115.0:74.0:250.0 D74.0:-115.0:250.0 P100
-M666 Q0.007 R:15.0:15.0:15.0:15.0:15.0 U2:2:2:2:2 O1:1:1:1:1 L20:20:20:20:20 H255:255:255:255:255 H25:25:25:25:25
-
-M350 X16 Y16 Z16 U16 V16 W16 A16 B16 I1       ; configure microstepping with interpolation
 ; pi * 30 / 200 = length_per_step = pi * spool_diameter / steps_per_motor_rev = 0.47123889803
 ; TODO adapt parameters to reprope kynematics
-M92 X80 Y80 Z80 U80 V80 W80 A80 B80 ; set steps per mm
-M566 X900.00 Y900.00 Z900.00 U900.00 V900.00 W900.00 A900.00 B900.00 ; set maximum instantaneous speed changes (mm/min)
-M203 X6000.00 Y6000.00 Z6000.00 U6000.00 V6000.00 W6000.00 A6000.00 B6000.00 ; set maximum speeds (mm/min)
-M201 X500.00 Y500.00 Z500.00 A500.00 B500.00 C500.00 D500.00 U500.00 ; set accelerations (mm/s^2)
-M906 X800 Y800 Z800 U800 V800 W800 A800 B800 I30                  ; set motor currents (mA) and motor idle factor in per cent
-M84 S30                                       ; Set idle timeout
+; M92 X80 Y80 Z80 U80 V80 W80 A80 B80 ; set steps per mm
+; M92 X80 Y80 Z80 ; set steps per mm
+; M566 X900.00 Y900.00 Z900.00 U900.00 V900.00 W900.00 A900.00 B900.00 ; set maximum instantaneous speed changes (mm/min)
+; M203 X6000.00 Y6000.00 Z6000.00 U6000.00 V6000.00 W6000.00 A6000.00 B6000.00 ; set maximum speeds (mm/min)
+; M201 X500.00 Y500.00 Z500.00 A500.00 B500.00 C500.00 D500.00 U500.00 ; set accelerations (mm/s^2)
+; M204 P500 T2000 ; Set printing acceleration and travel accelerations
+; M906 X800 Y800 Z800 U800 V800 W800 A800 B800 I30                  ; set motor currents (mA) and motor idle factor in per cent
+; M906 X800 Y800 Z800 I30                  ; set motor currents (mA) and motor idle factor in per cent
+; M84 S30                                       ; Set idle timeout
 
 ; Axis Limits
 ; M208 X0 Y0 Z0 S1                              ; set axis minima
