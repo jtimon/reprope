@@ -1,15 +1,12 @@
 
-M669 K6 N8 A-115.0:74.0:250.0 B-74.0:115.0:250.0 C74.0:115.0:250.0 D115.0:74.0:250.0 E115.0:-74.0:250.0 F74.0:-115.0:250.0 H-74.0:-115.0:250.0 I-115.0:-74.0:250.0 P100
-
-
 
 ; Drives
 M569 P0 S0 D3 V40                             ; physical drive 0 goes backwards using TMC2209 driver timings (Stealthchop)
-M569 P1 S0 D3 V40                             ; physical drive 1 goes backwards using TMC2209 driver timings (Stealthchop)
+; M569 P1 S0 D3 V40                             ; physical drive 1 goes backwards using TMC2209 driver timings (Stealthchop)
 M569 P2 S0 D3 V40                             ; physical drive 2 goes backwards using TMC2209 driver timings (Stealthchop)
-M569 P3 S0 D3 V40                             ; physical drive 3 goes backwards using TMC2209 driver timings (Stealthchop)
+; M569 P3 S0 D3 V40                             ; physical drive 3 goes backwards using TMC2209 driver timings (Stealthchop)
 M569 P4 S0 D3 V40                             ; physical drive 4 goes backwards using TMC2209 driver timings (Stealthchop)
-M569 P5 S0 D3 V40                             ; physical drive 5 goes backwards using TMC2209 driver timings (Stealthchop)
+; M569 P5 S0 D3 V40                             ; physical drive 5 goes backwards using TMC2209 driver timings (Stealthchop)
 M569 P6 S0 D3 V40                             ; physical drive 6 goes backwards using TMC2209 driver timings (Stealthchop)
 ; M569 P7 S0 D3 V40                             ; physical drive 7 goes backwards using TMC2209 driver timings (Stealthchop)
 ; M584 X0 Y1 Z2 U3 V4 W5 A6 B7 R0               ; set drive mapping
@@ -17,7 +14,7 @@ M569 P6 S0 D3 V40                             ; physical drive 6 goes backwards 
 ; Reprope setup 4 anchors:
 M584 X0 Y2 Z4 U6 R0               ; set drive mapping
 M669 K6 N4 A-115.0:74.0:250.0 B74.0:115.0:250.0 C115.0:-74.0:250.0 D-74.0:-115.0:250.0 P100
-M666 Q0.007 R15.0:15.0:15.0:15.0 U2:2:2:2 O1:1:1:1 L20:20:20:20 H255:255:255:255 H25:25:25:25
+M666 A2 Q0.007 R15.0:15.0:15.0:15.0 U2:2:2:2 O1:1:1:1 L20:20:20:20 H255:255:255:255 H25:25:25:25
 M350 X16 Y16 Z16 I1       ; configure 1/16 microstepping with interpolation
 M92 X80 Y80 Z80 U80 ; set steps per mm
 M566 X900.00 Y900.00 Z900.00 U900.00 ; set maximum instantaneous speed changes (mm/min)

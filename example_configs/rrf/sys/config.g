@@ -55,7 +55,7 @@ M569 P6 S0 D3 V40                             ; physical drive 6 goes backwards 
 ; Reprope setup 4 anchors:
 M584 X0 Y2 Z4 U6 R0               ; set drive mapping
 M669 K6 N4 A-115.0:74.0:250.0 B74.0:115.0:250.0 C115.0:-74.0:250.0 D-74.0:-115.0:250.0 P100
-M666 Q0.007 R15.0:15.0:15.0:15.0 U2:2:2:2 O1:1:1:1 L20:20:20:20 H255:255:255:255 H25:25:25:25
+M666 A2 Q0.007 R15.0:15.0:15.0:15.0 U2:2:2:2 O1:1:1:1 L20:20:20:20 H255:255:255:255 H25:25:25:25
 M350 X16 Y16 Z16 I1       ; configure 1/16 microstepping with interpolation
 M92 X80 Y80 Z80 U80 ; set steps per mm
 M566 X900.00 Y900.00 Z900.00 U900.00 ; set maximum instantaneous speed changes (mm/min)
